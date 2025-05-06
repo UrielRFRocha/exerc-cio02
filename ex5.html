@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Último Ano</title></head>
+<body>
+  <h2>Último Ano</h2>
+  <div id="ultimo_ano"></div>
+
+  <script>
+    fetch('livros.xml')
+      .then(res => res.text())
+      .then(data => {
+        const xml = new DOMParser().parseFromString(data, 'text/xml');
+        const livros = xml.getElementsByTagName('livro');
+        const ultimoLivro = livros[livros.length - 1];
+
+        let filho = ultimoLivro.lastChild;
+        while (filho && filho.nodeType !== 1) {
+          filho = filho.previousSibling;
+        }
+
+        const valorAno = filho.firstChild.nodeValue;
+        document.getElementById('ultimo_ano').textContent = valorAno;
+      });
+  </script>
+</body>
+</html>

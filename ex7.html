@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Exibir IDs</title></head>
+<body>
+  <h2>Todos os IDs</h2>
+  <div id="ids"></div>
+
+  <script>
+    fetch('livros.xml')
+      .then(res => res.text())
+      .then(data => {
+        const xml = new DOMParser().parseFromString(data, 'text/xml');
+        const livros = xml.getElementsByTagName('livro');
+        const div = document.getElementById('ids');
+
+        for (let i = 0; i < livros.length; i++) {
+          const attr = livros[i].getAttributeNode('id');
+          const p = document.createElement('p');
+          p.textContent = `ID: ${attr.nodeValue}`;
+          div.appendChild(p);
+        }
+      });
+  </script>
+</body>
+</html>

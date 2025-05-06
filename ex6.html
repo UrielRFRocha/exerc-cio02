@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Navegar com parentNode</title></head>
+<body>
+  <h2>Navegação com parentNode</h2>
+  <div id="navegacao"></div>
+
+  <script>
+    fetch('livros.xml')
+      .then(res => res.text())
+      .then(data => {
+        const xml = new DOMParser().parseFromString(data, 'text/xml');
+        const autor = xml.getElementsByTagName('livro')[1].getElementsByTagName('autor')[0];
+        const livro = autor.parentNode;
+        const titulo = livro.getElementsByTagName('titulo')[0];
+
+        document.getElementById('navegacao').textContent = titulo.textContent;
+      });
+  </script>
+</body>
+</html>

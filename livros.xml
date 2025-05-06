@@ -1,15 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<livros>
-  <livro>
-    <titulo>Dom Casmurro</titulo>
-    <autor>Machado de Assis</autor>
+<livraria>
+  <livro id="1">
+    <titulo>O Pequeno Príncipe</titulo>
+    <autor>Antoine de Saint-Exupéry</autor>
+    <ano>1943</ano>
   </livro>
-  <livro>
-    <titulo>Capitães da Areia</titulo>
-    <autor>Jorge Amado</autor>
+  <livro id="2">
+    <titulo>Dom Quixote</titulo>
+    <autor>Miguel de Cervantes</autor>
+    <ano>1605</ano>
   </livro>
-  <livro>
-    <titulo>O Cortiço</titulo>
-    <autor>Aluísio Azevedo</autor>
+  <livro id="3">
+    <titulo>1984</titulo>
+    <autor>George Orwell</autor>
+    <ano>1949</ano>
   </livro>
-</livros>
+</livraria>

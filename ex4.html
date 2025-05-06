@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Primeiro Autor</title></head>
+<body>
+  <h2>Primeiro Autor</h2>
+  <div id="primeiro_autor"></div>
+
+  <script>
+    fetch('livros.xml')
+      .then(res => res.text())
+      .then(data => {
+        const xml = new DOMParser().parseFromString(data, 'text/xml');
+        const livro = xml.getElementsByTagName('livro')[0];
+
+        let filho = livro.firstChild;
+        while (filho && filho.nodeType !== 1) {
+          filho = filho.nextSibling;
+        }
+
+        let autor = filho.nextSibling;
+        while (autor && autor.nodeType !== 1) {
+          autor = autor.nextSibling;
+        }
+
+        const nomeAutor = autor.firstChild.nodeValue;
+        document.getElementById('primeiro_autor').textContent = nomeAutor;
+      });
+  </script>
+</body>
+</html>
